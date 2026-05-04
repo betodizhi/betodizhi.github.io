@@ -3,85 +3,138 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>最新网址发布页</title>
+<title>官方入口发布页</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
   margin: 0;
-  background: #0f172a;
-  color: #fff;
+  background: linear-gradient(135deg,#0f172a,#020617);
   font-family: Arial, sans-serif;
+  color: #fff;
   text-align: center;
-  padding: 40px 20px;
+}
+
+.header {
+  padding: 40px 20px 10px;
 }
 
 h1 {
-  font-size: 28px;
+  font-size: 26px;
   margin-bottom: 10px;
 }
 
-p {
-  color: #aaa;
+.subtitle {
+  color: #94a3b8;
+  font-size: 14px;
 }
 
-.container {
-  margin-top: 30px;
+.copy-box {
+  margin: 15px auto;
+  padding: 10px;
+  width: 260px;
+  background: #111827;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #38bdf8;
+  word-break: break-all;
+}
+
+.copy-btn {
+  margin-top: 8px;
+  padding: 8px 16px;
+  background: #22c55e;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  opacity: 0.9;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  margin: 20px;
+  padding: 25px;
+  border-radius: 16px;
 }
 
 .btn {
   display: block;
   margin: 12px auto;
-  padding: 16px;
+  padding: 15px;
   width: 260px;
-  background: linear-gradient(45deg,#2563eb,#3b82f6);
-  color: #fff;
-  text-decoration: none;
   border-radius: 12px;
-  font-size: 16px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
 }
 
-.btn:hover {
-  opacity: 0.9;
-}
+.btn1 { background: linear-gradient(45deg,#3b82f6,#2563eb); }
+.btn2 { background: linear-gradient(45deg,#10b981,#059669); }
+.btn3 { background: linear-gradient(45deg,#f59e0b,#d97706); }
+.btn4 { background: linear-gradient(45deg,#ec4899,#db2777); }
 
 .notice {
-  margin-top: 30px;
+  margin-top: 15px;
+  font-size: 13px;
   color: #facc15;
 }
 
 .footer {
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 12px;
-  color: #666;
+  color: #64748b;
 }
 </style>
 </head>
 
 <body>
 
-<h1>最新网址发布页</h1>
-<p>请收藏本页面，防止失联</p>
+<div class="header">
+  <h1>官方最新地址发布页</h1>
+  <div class="subtitle">请收藏本页面，避免失联</div>
 
-<div class="container">
-  <a class="btn" href="https://example1.com">主站入口1</a>
-  <a class="btn" href="https://example2.com">主站入口2</a>
-  <a class="btn" href="https://example3.com">备用入口</a>
+  <div class="copy-box" id="urlBox">
+    https://betodizhi.github.io
+  </div>
+  <button class="copy-btn" onclick="copyUrl()">一键复制地址</button>
 </div>
 
-<div class="notice">
-⚠️ 建议截图保存或添加书签<br>
-如遇无法访问，请返回本页获取最新地址
+<div class="card">
+
+  <a class="btn btn1" href="https://你的链接1.com">免费信息网站入口</a>
+  <a class="btn btn2" href="https://你的链接2.com">免费联系方式入口</a>
+  <a class="btn btn3" href="https://你的链接3.com">免费百家乐软件入口</a>
+  <a class="btn btn4" href="https://t.me/你的TG">TG频道订阅</a>
+
+  <div class="notice">
+    ⚠️ 建议截图保存或添加书签，防止丢失
+  </div>
+
 </div>
 
 <div class="footer">
-© 官方唯一发布页
+  © 官方发布页 · 请务必收藏
 </div>
 
 <script>
-setTimeout(function(){
-  window.location.href="https://example1.com";
-},3000);
+function copyUrl() {
+  const text = document.getElementById("urlBox").innerText;
+  navigator.clipboard.writeText(text);
+  alert("已复制！请粘贴保存或添加书签");
+}
+
+// 页面提示收藏
+window.onload = function() {
+  setTimeout(() => {
+    alert("请收藏本页面，以防失联！");
+  }, 1500);
+}
 </script>
 
 </body>
