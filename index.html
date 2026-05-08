@@ -79,7 +79,7 @@ body {
   max-width: 480px;
   margin: 0 auto;
   padding: 0 20px;
-  padding-bottom: 120px; /* 给底部悬浮广告留空间 */
+  padding-bottom: 100px; /* 给底部悬浮广告留空间 */
 }
 
 /* ===== 头部区域 ===== */
@@ -481,7 +481,7 @@ h1 {
   box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
 }
 
-/* ===== 底部悬浮广告栏 ===== */
+/* ===== 底部悬浮广告栏（无关闭按钮） ===== */
 .float-ad-bar {
   position: fixed;
   bottom: 0;
@@ -492,23 +492,15 @@ h1 {
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 8px 16px 12px;
-  transition: transform 0.3s ease;
-}
-
-.float-ad-bar.hidden {
-  transform: translateY(100%);
 }
 
 .float-ad-inner {
   max-width: 480px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 12px;
 }
 
 .float-ad-img {
-  flex: 1;
+  display: block;
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
@@ -529,34 +521,12 @@ h1 {
   object-fit: cover;
 }
 
-.float-ad-close {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #94a3b8;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.float-ad-close:hover {
-  background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
-  border-color: rgba(239, 68, 68, 0.3);
-}
-
 /* ===== 响应式 ===== */
 @media (max-width: 480px) {
   h1 { font-size: 24px; }
   .card { padding: 24px 16px; }
   .btn { padding: 14px 16px; font-size: 14px; }
-  .container { padding-bottom: 100px; }
+  .container { padding-bottom: 90px; }
   .float-ad-img img { max-height: 70px; }
 }
 
@@ -670,13 +640,12 @@ h1 {
   </div>
 </div>
 
-<!-- 底部悬浮广告栏 -->
+<!-- 底部悬浮广告栏（无关闭按钮） -->
 <div class="float-ad-bar" id="floatAdBar">
   <div class="float-ad-inner">
-    <a class="float-ad-img" href="https://betobeto.com/bet/yue.html" target="_blank">
+        <a class="float-ad-img" href="https://betobeto.com/bet/yue.html" target="_blank">
       <img src="https://betobeto.com/images/gg/zhibo.gif" alt="广告" onerror="this.style.display='none'">
     </a>
-    <button class="float-ad-close" onclick="closeFloatAd()" title="关闭广告">×</button>
   </div>
 </div>
 
@@ -733,11 +702,6 @@ document.getElementById("overlay").addEventListener('click', function(e) {
     closeModal();
   }
 });
-
-// 关闭底部悬浮广告
-function closeFloatAd() {
-  document.getElementById("floatAdBar").classList.add("hidden");
-}
 </script>
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({id:"Knfcg3Zbjmrp8euT",ck:"Knfcg3Zbjmrp8euT"})</script>
