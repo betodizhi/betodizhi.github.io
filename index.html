@@ -79,6 +79,7 @@ body {
   max-width: 480px;
   margin: 0 auto;
   padding: 0 20px;
+  padding-bottom: 120px; /* 给底部悬浮广告留空间 */
 }
 
 /* ===== 头部区域 ===== */
@@ -480,11 +481,83 @@ h1 {
   box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
 }
 
+/* ===== 底部悬浮广告栏 ===== */
+.float-ad-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 16px 12px;
+  transition: transform 0.3s ease;
+}
+
+.float-ad-bar.hidden {
+  transform: translateY(100%);
+}
+
+.float-ad-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.float-ad-img {
+  flex: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.float-ad-img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+}
+
+.float-ad-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 80px;
+  object-fit: cover;
+}
+
+.float-ad-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.float-ad-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
 /* ===== 响应式 ===== */
 @media (max-width: 480px) {
   h1 { font-size: 24px; }
   .card { padding: 24px 16px; }
   .btn { padding: 14px 16px; font-size: 14px; }
+  .container { padding-bottom: 100px; }
+  .float-ad-img img { max-height: 70px; }
 }
 
 /* ===== 入场动画 ===== */
@@ -507,6 +580,7 @@ h1 {
   }
 }
 </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 
@@ -553,7 +627,7 @@ h1 {
 
     <a class="btn btn2" href="https://www.baoyang.one" target="_blank">
       <span class="btn-icon">📞</span>
-      <span>包养大学生网站入口</span>
+      <span>大学生包养网站入口</span>
       <span class="btn-arrow">›</span>
     </a>
 
@@ -596,6 +670,16 @@ h1 {
   </div>
 </div>
 
+<!-- 底部悬浮广告栏 -->
+<div class="float-ad-bar" id="floatAdBar">
+  <div class="float-ad-inner">
+    <a class="float-ad-img" href="https://betobeto.com/bet/yue.html" target="_blank">
+      <img src="https://betobeto.com/images/gg/zhibo.gif" alt="广告" onerror="this.style.display='none'">
+    </a>
+    <button class="float-ad-close" onclick="closeFloatAd()" title="关闭广告">×</button>
+  </div>
+</div>
+
 <script>
 function copyUrl() {
   const text = document.getElementById("urlBox").innerText.replace('🔗', '').trim();
@@ -603,11 +687,8 @@ function copyUrl() {
   const toast = document.getElementById("toast");
 
   navigator.clipboard.writeText(text).then(() => {
-    // 按钮状态变化
     btn.classList.add('copied');
     btn.innerHTML = '<span>✅</span> 复制成功';
-
-    // 显示Toast
     toast.classList.add('show');
 
     setTimeout(() => {
@@ -616,7 +697,6 @@ function copyUrl() {
       btn.innerHTML = '<span>📋</span> 一键复制地址';
     }, 2500);
   }).catch(() => {
-    // 兼容旧浏览器
     const textarea = document.createElement('textarea');
     textarea.value = text;
     document.body.appendChild(textarea);
@@ -653,6 +733,11 @@ document.getElementById("overlay").addEventListener('click', function(e) {
     closeModal();
   }
 });
+
+// 关闭底部悬浮广告
+function closeFloatAd() {
+  document.getElementById("floatAdBar").classList.add("hidden");
+}
 </script>
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({id:"Knfcg3Zbjmrp8euT",ck:"Knfcg3Zbjmrp8euT"})</script>
